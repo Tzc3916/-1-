@@ -1,139 +1,338 @@
-Magisk:Dropdown({
-    Title = "选择一个皮肤",
-    Values = { 
-        "烟火", "虚空", "纯金", "暗物质", "反物质", "神秘", "虚空神秘", "战术", "纯金战术", 
-        "白未来", "黑未来", "圣诞未来", "礼物包装", "猩红", "收割者", "虚空收割者", "圣诞玩具",
-        "荒地", "隐形", "像素", "钻石像素", "黄金零下", "绿水晶", "生物", "樱花", "精英", 
-        "黑樱花", "彩虹激光", "蓝水晶", "紫水晶", "红水晶", "零下", "虚空射线", "冰冻钻石",
-        "虚空梦魇", "金雪", "爱国者", "MM2", "声望", "酷化", "蒸汽", "海盗", "玫瑰", "黑玫瑰",
-        "激光", "烟花", "诅咒背瓜", "大炮", "财富", "黄金大炮", "四叶草", "自由", "黑曜石", "赛博朋克"
-    },
-    Callback = function(Value) 
-        if Value == "烟火" then
-            skinsec = "Sparkler"
-        elseif Value == "虚空" then
-            skinsec = "Void"
-        elseif Value == "纯金" then
-            skinsec = "Solid Gold"
-        elseif Value == "暗物质" then
-            skinsec = "Dark Matter"
-        elseif Value == "反物质" then
-            skinsec = "Anti Matter"
-        elseif Value == "神秘" then
-            skinsec = "Hystic"
-        elseif Value == "虚空神秘" then
-            skinsec = "Void Mystic"
-        elseif Value == "战术" then
-            skinsec = "Tactical"
-        elseif Value == "纯金战术" then
-            skinsec = "Solid Gold Tactical"
-        elseif Value == "白未来" then
-            skinsec = "Future White"
-        elseif Value == "黑未来" then
-            skinsec = "Future Black"
-        elseif Value == "圣诞未来" then
-            skinsec = "Christmas Future"
-        elseif Value == "礼物包装" then
-            skinsec = "Gift Wrapped"
-        elseif Value == "猩红" then
-            skinsec = "Crimson Blood"
-        elseif Value == "收割者" then
-            skinsec = "Reaper"
-        elseif Value == "虚空收割者" then
-            skinsec = "Void Reaper"
-        elseif Value == "圣诞玩具" then
-            skinsec = "Christmas Toy"
-        elseif Value == "荒地" then
-            skinsec = "Wasteland"
-        elseif Value == "隐形" then
-            skinsec = "Invisible"
-        elseif Value == "像素" then
-            skinsec = "Pixel"
-        elseif Value == "钻石像素" then
-            skinsec = "Diamond Pixel"
-        elseif Value == "黄金零下" then
-            skinsec = "Frozen-Gold"
-        elseif Value == "绿水晶" then
-            skinsec = "Atomic Nature"
-        elseif Value == "生物" then
-            skinsec = "Biohazard"
-        elseif Value == "樱花" then
-            skinsec = "Sakura"
-        elseif Value == "精英" then
-            skinsec = "Elite"
-        elseif Value == "黑樱花" then
-            skinsec = "Death Blossom-Gold"
-        elseif Value == "彩虹激光" then
-            skinsec = "Rainbowlaser"
-        elseif Value == "蓝水晶" then
-            skinsec = "Atomic Water"
-        elseif Value == "紫水晶" then
-            skinsec = "Atomic Amethyst"
-        elseif Value == "红水晶" then
-            skinsec = "Atomic Flame"
-        elseif Value == "零下" then
-            skinsec = "Sub-Zero"
-        elseif Value == "虚空射线" then
-            skinsec = "Void-Ray"
-        elseif Value == "冰冻钻石" then
-            skinsec = "Frozen Diamond"
-        elseif Value == "虚空梦魇" then
-            skinsec = "Void Nightmare"
-        elseif Value == "金雪" then
-            skinsec = "Golden Snow"
-        elseif Value == "爱国者" then
-            skinsec = "Patriot"
-        elseif Value == "MM2" then
-            skinsec = "MM2 Barrett"
-        elseif Value == "声望" then
-            skinsec = "Prestige Barnett"
-        elseif Value == "酷化" then
-            skinsec = "Skin Walter"
-        elseif Value == "蒸汽" then
-            skinsec = "Steampunk"
-        elseif Value == "海盗" then
-            skinsec = "Pirate"
-        elseif Value == "玫瑰" then
-            skinsec = "Rose"
-        elseif Value == "黑玫瑰" then
-            skinsec = "Black Rose"
-        elseif Value == "激光" then
-            skinsec = "Hyperlaser"
-        elseif Value == "烟花" then
-            skinsec = "Firework"
-        elseif Value == "诅咒背瓜" then
-            skinsec = "Cursed Pumpkin"
-        elseif Value == "大炮" then
-            skinsec = "Cannon"
-        elseif Value == "财富" then
-            skinsec = "Firework"
-        elseif Value == "黄金大炮" then
-            skinsec = "Gold Cannon"
-        elseif Value == "四叶草" then
-            skinsec = "Lucky Clover"
-        elseif Value == "自由" then
-            skinsec = "Freedom"
-        elseif Value == "黑曜石" then
-            skinsec = "Obsidian"
-        elseif Value == "赛博朋克" then
-            skinsec = "Cyberpunk"
+local player = game.Players.LocalPlayer
+local gui = Instance.new("ScreenGui", game.CoreGui)
+gui.Name = "MobileScriptHubUI"
+
+-- 圆形主按钮
+local openBtn = Instance.new("ImageButton", gui)
+openBtn.Name = "OpenButton"
+openBtn.Size = UDim2.new(0, 60, 0, 60)
+openBtn.Position = UDim2.new(0.8, 0, 0.7, 0)
+openBtn.BackgroundTransparency = 1
+openBtn.Image = "rbxassetid://3570695787"
+openBtn.ImageColor3 = Color3.fromRGB(80, 180, 255)
+openBtn.ImageTransparency = 0.3
+
+-- 拖动主按钮
+local dragging = false
+local dragInput, mousePos, btnPos
+
+openBtn.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.Touch or input.UserInputType == Enum.UserInputType.MouseButton1 then
+        dragging = true
+        mousePos = input.Position
+        btnPos = openBtn.Position
+        input.Changed:Connect(function()
+            if input.UserInputState == Enum.UserInputState.End then
+                dragging = false
+            end
+        end)
+    end
+end)
+
+openBtn.InputChanged:Connect(function(input)
+    if dragging and (input.UserInputType == Enum.UserInputType.Touch or input.UserInputType == Enum.UserInputType.MouseMovement) then
+        local delta = input.Position - mousePos
+        openBtn.Position = UDim2.new(
+            btnPos.X.Scale, btnPos.X.Offset + delta.X,
+            btnPos.Y.Scale, btnPos.Y.Offset + delta.Y
+        )
+    end
+end)
+
+-- 悬浮窗（初始隐藏）
+local mainFrame = Instance.new("Frame", gui)
+mainFrame.Name = "MainFrame"
+mainFrame.Size = UDim2.new(0, 320, 0, 380)
+mainFrame.Position = UDim2.new(0.5, -160, 0.4, -190)
+mainFrame.BackgroundColor3 = Color3.fromRGB(120, 200, 255)
+mainFrame.BackgroundTransparency = 0.45
+mainFrame.BorderSizePixel = 0
+mainFrame.Visible = false
+
+local UICorner = Instance.new("UICorner", mainFrame)
+UICorner.CornerRadius = UDim.new(0, 20)
+
+-- 左侧功能列表
+local listFrame = Instance.new("Frame", mainFrame)
+listFrame.Name = "ListFrame"
+listFrame.Size = UDim2.new(0, 70, 1, 0)
+listFrame.Position = UDim2.new(0, 0, 0, 0)
+listFrame.BackgroundColor3 = Color3.fromRGB(80, 180, 255)
+listFrame.BackgroundTransparency = 0.35
+listFrame.BorderSizePixel = 0
+local listCorner = Instance.new("UICorner", listFrame)
+listCorner.CornerRadius = UDim.new(0, 18)
+
+local UIListLayout = Instance.new("UIListLayout", listFrame)
+UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+UIListLayout.Padding = UDim.new(0, 12)
+
+-- 右侧主内容显示区域
+local contentFrame = Instance.new("Frame", mainFrame)
+contentFrame.Name = "ContentFrame"
+contentFrame.Position = UDim2.new(0, 76, 0, 16)
+contentFrame.Size = UDim2.new(1, -86, 1, -32)
+contentFrame.BackgroundTransparency = 1
+
+-- 主页文本
+local contentLabel = Instance.new("TextLabel", contentFrame)
+contentLabel.Name = "ContentLabel"
+contentLabel.Position = UDim2.new(0, 0, 0, 0)
+contentLabel.Size = UDim2.new(1, 0, 1, 0)
+contentLabel.BackgroundTransparency = 1
+contentLabel.TextColor3 = Color3.fromRGB(40, 40, 100)
+contentLabel.Font = Enum.Font.Gotham
+contentLabel.TextSize = 18
+contentLabel.TextWrapped = true
+contentLabel.TextXAlignment = Enum.TextXAlignment.Left
+contentLabel.TextYAlignment = Enum.TextYAlignment.Top
+contentLabel.Visible = true
+contentLabel.Text = ""
+
+-- 清理内容区
+local function clearContentFrame()
+    for _, v in pairs(contentFrame:GetChildren()) do
+        if v ~= contentLabel then
+            v:Destroy()
         end
     end
-})
-Magisk:Toggle({
-    Title = "开启美化",
-    --Image = "bird",
-    Value = false,
-    Callback = function(start) 
-autoskin = start
-if autoskin then
-local it = require(game:GetService("ReplicatedStorage").devv).load("v3item").inventory
-local b1 = require(game:GetService('ReplicatedStorage').devv).load('v3item').inventory.items
-for i, item in next, b1 do 
-if item.type == "Gun" then
-it.skinUpdate(item.name, skinsec)
+    contentLabel.Visible = false
 end
+
+local function showHome()
+    clearContentFrame()
+    contentLabel.Visible = true
+    contentLabel.Text = [[
+欢迎使用Chmao脚本中心！
+
+QQ群：123456789
+作者：Tzc3916
+介绍：这是一个支持云更新与多功能脚本的移动端脚本中心。
+
+如有建议或问题请联系作者。
+]]
 end
+
+-- 皮肤美化数据
+local skinsec = "Sparkler"
+local autoskin = false
+
+local skinList = { 
+    "烟火", "虚空", "纯金", "暗物质", "反物质", "神秘", "虚空神秘", "战术", "纯金战术", 
+    "白未来", "黑未来", "圣诞未来", "礼物包装", "猩红", "收割者", "虚空收割者", "圣诞玩具",
+    "荒地", "隐形", "像素", "钻石像素", "黄金零下", "绿水晶", "生物", "樱花", "精英", 
+    "黑樱花", "彩虹激光", "蓝水晶", "紫水晶", "红水晶", "零下", "虚空射线", "冰冻钻石",
+    "虚空梦魇", "金雪", "爱国者", "MM2", "声望", "酷化", "蒸汽", "海盗", "玫瑰", "黑玫瑰",
+    "激光", "烟花", "诅咒背瓜", "大炮", "财富", "黄金大炮", "四叶草", "自由", "黑曜石", "赛博朋克"
+}
+local skinMap = {
+    ["烟火"] = "Sparkler", ["虚空"] = "Void", ["纯金"] = "Solid Gold", ["暗物质"] = "Dark Matter",
+    ["反物质"] = "Anti Matter", ["神秘"] = "Hystic", ["虚空神秘"] = "Void Mystic", ["战术"] = "Tactical",
+    ["纯金战术"] = "Solid Gold Tactical", ["白未来"] = "Future White", ["黑未来"] = "Future Black",
+    ["圣诞未来"] = "Christmas Future", ["礼物包装"] = "Gift Wrapped", ["猩红"] = "Crimson Blood",
+    ["收割者"] = "Reaper", ["虚空收割者"] = "Void Reaper", ["圣诞玩具"] = "Christmas Toy", ["荒地"] = "Wasteland",
+    ["隐形"] = "Invisible", ["像素"] = "Pixel", ["钻石像素"] = "Diamond Pixel", ["黄金零下"] = "Frozen-Gold",
+    ["绿水晶"] = "Atomic Nature", ["生物"] = "Biohazard", ["樱花"] = "Sakura", ["精英"] = "Elite",
+    ["黑樱花"] = "Death Blossom-Gold", ["彩虹激光"] = "Rainbowlaser", ["蓝水晶"] = "Atomic Water",
+    ["紫水晶"] = "Atomic Amethyst", ["红水晶"] = "Atomic Flame", ["零下"] = "Sub-Zero",
+    ["虚空射线"] = "Void-Ray", ["冰冻钻石"] = "Frozen Diamond", ["虚空梦魇"] = "Void Nightmare",
+    ["金雪"] = "Golden Snow", ["爱国者"] = "Patriot", ["MM2"] = "MM2 Barrett", ["声望"] = "Prestige Barnett",
+    ["酷化"] = "Skin Walter", ["蒸汽"] = "Steampunk", ["海盗"] = "Pirate", ["玫瑰"] = "Rose",
+    ["黑玫瑰"] = "Black Rose", ["激光"] = "Hyperlaser", ["烟花"] = "Firework", ["诅咒背瓜"] = "Cursed Pumpkin",
+    ["大炮"] = "Cannon", ["财富"] = "Firework", ["黄金大炮"] = "Gold Cannon", ["四叶草"] = "Lucky Clover",
+    ["自由"] = "Freedom", ["黑曜石"] = "Obsidian", ["赛博朋克"] = "Cyberpunk"
+}
+
+-- 脚本1和脚本2功能按钮
+local function showScriptList(scriptType)
+    clearContentFrame()
+    if scriptType == "Script1" then
+        -- 第1个按钮：演示功能（你可自行更换为其他功能）
+        local funBtn1 = Instance.new("TextButton", contentFrame)
+        funBtn1.Name = scriptType .. "_FuncBtn1"
+        funBtn1.Size = UDim2.new(1, 0, 0, 34)
+        funBtn1.Position = UDim2.new(0, 0, 0, 0)
+        funBtn1.BackgroundColor3 = Color3.fromRGB(180, 220, 255)
+        funBtn1.BackgroundTransparency = 0.15
+        funBtn1.Text = "一键加载脚本"
+        funBtn1.TextColor3 = Color3.fromRGB(40, 40, 100)
+        funBtn1.Font = Enum.Font.Gotham
+        funBtn1.TextSize = 16
+        funBtn1.AutoButtonColor = true
+        funBtn1.TextXAlignment = Enum.TextXAlignment.Left
+        local btnCorner1 = Instance.new("UICorner", funBtn1)
+        btnCorner1.CornerRadius = UDim.new(0, 10)
+        funBtn1.MouseButton1Click:Connect(function()
+            loadstring(game:HttpGet("https://pastebin.com/raw/PssfsaT1"))()
+        end)
+
+        -- 第2个按钮：皮肤美化
+        local funBtn2 = Instance.new("TextButton", contentFrame)
+        funBtn2.Name = scriptType .. "_FuncBtn2"
+        funBtn2.Size = UDim2.new(1, 0, 0, 34)
+        funBtn2.Position = UDim2.new(0, 0, 0, 38)
+        funBtn2.BackgroundColor3 = Color3.fromRGB(180, 220, 255)
+        funBtn2.BackgroundTransparency = 0.15
+        funBtn2.Text = "皮肤美化"
+        funBtn2.TextColor3 = Color3.fromRGB(40, 40, 100)
+        funBtn2.Font = Enum.Font.Gotham
+        funBtn2.TextSize = 16
+        funBtn2.AutoButtonColor = true
+        funBtn2.TextXAlignment = Enum.TextXAlignment.Left
+        local btnCorner2 = Instance.new("UICorner", funBtn2)
+        btnCorner2.CornerRadius = UDim.new(0, 10)
+        funBtn2.MouseButton1Click:Connect(function()
+            clearContentFrame()
+            -- 标题
+            local title = Instance.new("TextLabel", contentFrame)
+            title.Position = UDim2.new(0, 0, 0, 0)
+            title.Size = UDim2.new(1, 0, 0, 28)
+            title.BackgroundTransparency = 1
+            title.Text = "皮肤美化"
+            title.TextColor3 = Color3.fromRGB(20, 60, 120)
+            title.Font = Enum.Font.GothamBold
+            title.TextSize = 20
+
+            -- 下拉选择框
+            local dropdown = Instance.new("TextButton", contentFrame)
+            dropdown.Position = UDim2.new(0, 0, 0, 36)
+            dropdown.Size = UDim2.new(1, 0, 0, 32)
+            dropdown.BackgroundColor3 = Color3.fromRGB(200, 220, 255)
+            dropdown.Text = "选择皮肤（当前：" .. skinsec .. "）"
+            dropdown.Font = Enum.Font.Gotham
+            dropdown.TextColor3 = Color3.fromRGB(40, 40, 100)
+            dropdown.TextSize = 16
+            local dropcorner = Instance.new("UICorner", dropdown)
+            dropcorner.CornerRadius = UDim.new(0, 8)
+
+            -- 下拉选项面板
+            local dropPanel = Instance.new("Frame", contentFrame)
+            dropPanel.Position = UDim2.new(0, 0, 0, 68)
+            dropPanel.Size = UDim2.new(1, 0, 0, 200)
+            dropPanel.BackgroundColor3 = Color3.fromRGB(230, 240, 255)
+            dropPanel.Visible = false
+            dropPanel.ClipsDescendants = true
+            local dpCorner = Instance.new("UICorner", dropPanel)
+            dpCorner.CornerRadius = UDim.new(0, 8)
+            local dropList = Instance.new("UIListLayout", dropPanel)
+            dropList.SortOrder = Enum.SortOrder.LayoutOrder
+
+            dropdown.MouseButton1Click:Connect(function()
+                dropPanel.Visible = not dropPanel.Visible
+            end)
+            for _, skin in ipairs(skinList) do
+                local op = Instance.new("TextButton", dropPanel)
+                op.Size = UDim2.new(1, 0, 0, 28)
+                op.BackgroundColor3 = Color3.fromRGB(210, 230, 255)
+                op.Text = skin
+                op.Font = Enum.Font.Gotham
+                op.TextColor3 = Color3.fromRGB(60, 60, 120)
+                op.TextSize = 15
+                local opCorner = Instance.new("UICorner", op)
+                opCorner.CornerRadius = UDim.new(0, 7)
+                op.MouseButton1Click:Connect(function()
+                    dropPanel.Visible = false
+                    skinsec = skinMap[skin] or skin
+                    dropdown.Text = "选择皮肤（当前：" .. skinsec .. "）"
+                end)
+            end
+
+            -- 开关
+            local toggle = Instance.new("TextButton", contentFrame)
+            toggle.Position = UDim2.new(0, 0, 0, 272)
+            toggle.Size = UDim2.new(1, 0, 0, 36)
+            toggle.BackgroundColor3 = Color3.fromRGB(200, 240, 200)
+            toggle.Text = "开启美化 [" .. (autoskin and "已开" or "未开") .. "]"
+            toggle.Font = Enum.Font.GothamBold
+            toggle.TextColor3 = Color3.fromRGB(40, 100, 40)
+            toggle.TextSize = 18
+            local toggleCorner = Instance.new("UICorner", toggle)
+            toggleCorner.CornerRadius = UDim.new(0, 10)
+
+            toggle.MouseButton1Click:Connect(function()
+                autoskin = not autoskin
+                toggle.Text = "开启美化 [" .. (autoskin and "已开" or "未开") .. "]"
+                if autoskin then
+                    local it = require(game:GetService("ReplicatedStorage").devv).load("v3item").inventory
+                    local b1 = require(game:GetService('ReplicatedStorage').devv).load('v3item').inventory.items
+                    for i, item in next, b1 do 
+                        if item.type == "Gun" then
+                            it.skinUpdate(item.name, skinsec)
+                        end
+                    end
+                end
+            end)
+        end)
+
+        -- 其余功能按钮可继续添加
+        for i = 3, 10 do
+            local funBtn = Instance.new("TextButton", contentFrame)
+            funBtn.Name = scriptType .. "_FuncBtn" .. i
+            funBtn.Size = UDim2.new(1, 0, 0, 34)
+            funBtn.Position = UDim2.new(0, 0, 0, (i - 1) * 38)
+            funBtn.BackgroundColor3 = Color3.fromRGB(180, 220, 255)
+            funBtn.BackgroundTransparency = 0.15
+            funBtn.Text = "（这里添加功能脚本）"
+            funBtn.TextColor3 = Color3.fromRGB(40, 40, 100)
+            funBtn.Font = Enum.Font.Gotham
+            funBtn.TextSize = 16
+            funBtn.AutoButtonColor = true
+            funBtn.TextXAlignment = Enum.TextXAlignment.Left
+            local btnCorner = Instance.new("UICorner", funBtn)
+            btnCorner.CornerRadius = UDim.new(0, 10)
+        end
+    else
+        -- 脚本2：10个占位按钮
+        for i = 1, 10 do
+            local funBtn = Instance.new("TextButton", contentFrame)
+            funBtn.Name = scriptType .. "_FuncBtn" .. i
+            funBtn.Size = UDim2.new(1, 0, 0, 34)
+            funBtn.Position = UDim2.new(0, 0, 0, (i - 1) * 38)
+            funBtn.BackgroundColor3 = Color3.fromRGB(180, 220, 255)
+            funBtn.BackgroundTransparency = 0.15
+            funBtn.Text = "（这里添加功能脚本）"
+            funBtn.TextColor3 = Color3.fromRGB(40, 40, 100)
+            funBtn.Font = Enum.Font.Gotham
+            funBtn.TextSize = 16
+            funBtn.AutoButtonColor = true
+            funBtn.TextXAlignment = Enum.TextXAlignment.Left
+            local btnCorner = Instance.new("UICorner", funBtn)
+            btnCorner.CornerRadius = UDim.new(0, 10)
+        end
+    end
 end
+
+-- 支持回调的功能按钮
+local function addListButton(name, callback)
+    local btn = Instance.new("TextButton", listFrame)
+    btn.Size = UDim2.new(1, -16, 0, 44)
+    btn.Position = UDim2.new(0, 8, 0, 0)
+    btn.BackgroundColor3 = Color3.fromRGB(180, 220, 255)
+    btn.BackgroundTransparency = 0.2
+    btn.Text = name
+    btn.TextColor3 = Color3.fromRGB(40, 40, 100)
+    btn.Font = Enum.Font.GothamSemibold
+    btn.TextSize = 18
+    btn.AutoButtonColor = true
+    local btnCorner = Instance.new("UICorner", btn)
+    btnCorner.CornerRadius = UDim.new(1, 0)
+    if callback then
+        btn.MouseButton1Click:Connect(callback)
+    end
 end
-})
+
+-- 添加左侧主按钮
+addListButton("主页", showHome)
+addListButton("脚本1", function()
+    showScriptList("Script1")
+end)
+addListButton("脚本2", function()
+    showScriptList("Script2")
+end)
+
+-- 默认显示主页
+showHome()
+
+openBtn.MouseButton1Click:Connect(function()
+    mainFrame.Visible = not mainFrame.Visible
+end)
