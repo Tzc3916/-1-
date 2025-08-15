@@ -1,0 +1,7 @@
+local part = workspace.segmentSystem.Segments.Segment15.Folder.Part
+
+local highlight = Instance.new("Highlight")
+highlight.Adornee = part
+highlight.Parent = part
+highlight.FillColor = Color3.fromRGB(255, 0, 0)    -- 红色高亮
+highlight.OutlineColor = Color3.fromRGB(255,255,255)
